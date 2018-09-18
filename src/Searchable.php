@@ -165,7 +165,7 @@ trait Searchable
             return $this->syncDocument;
         }
 
-        return true;
+        return $this->isDirty(array_keys($this->getDocumentData()));
     }
 
     /**
