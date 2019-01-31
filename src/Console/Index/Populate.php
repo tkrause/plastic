@@ -41,11 +41,12 @@ class Populate extends Command
      */
     public function handle()
     {
-        $index = $this->index();
+        $index = config('plastic.index') . '_' . $this->index();
+        $shortIndex = $this->index();
 
         // Checks if the target index exists
         if (!$this->existsStatement($index)) {
-            $this->error('Index « '.$index.' » does not exists.');
+            $this->error('Index « ' . $index . ' » does not exists.');
 
             return;
         }
@@ -61,7 +62,7 @@ class Populate extends Command
 
         // Populates the index
         try {
-            $this->populateIndex($index);
+            $this->populateIndex($index, $shortIndex);
         } catch (\Exception $e) {
             $this->warn('An error occured while populating the new index !');
 
@@ -76,9 +77,9 @@ class Populate extends Command
      *
      * @throws \Exception
      */
-    protected function populateIndex($index)
+    protected function populateIndex($index, $shortIndex)
     {
-        $this->line('Populating the index « '.$index.' » ...');
+        $this->line('Populating the index « ' . $index . ' » ...');
 
         // Replaces the current default index by the one we want to populate
         $defaultIndex = Plastic::getDefaultIndex();
@@ -89,12 +90,12 @@ class Populate extends Command
         DB::connection()->disableQueryLog();
 
         // Populates from models
-        $models = $this->models($index);
+        $models = $this->models($shortIndex);
         $chunkSize = $this->chunkSize();
         foreach ($models as $model) {
-            $this->line('Indexing documents of model « '.$model.' » ...');
+            $this->line('Indexing documents of model « ' . $model . ' » ...');
             $model::chunk($chunkSize, function ($items) {
-                $this->line('Indexing chunk of '.$items->count().' documents ...');
+                $this->line('Indexing chunk of ' . $items->count() . ' documents ...');
                 Plastic::persist()->bulkSave($items);
             });
         }
@@ -149,6 +150,6 @@ class Populate extends Command
      */
     protected function chunkSize()
     {
-        return (int) config('plastic.populate.chunk_size');
+        return (int)config('plastic.populate.chunk_size');
     }
 }
