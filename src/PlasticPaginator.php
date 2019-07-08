@@ -22,7 +22,7 @@ class PlasticPaginator extends LengthAwarePaginator
     {
         $this->result = $result;
 
-        parent::__construct($result->hits(), $result->totalHits(), $limit, $page,
+        parent::__construct($result->hits(), $result->totalHits()['value'], $limit, $page,
             ['path' => LengthAwarePaginator::resolveCurrentPath()]);
 
         $hitsReference = &$this->items;
