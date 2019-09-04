@@ -1,9 +1,9 @@
 {
-  "name": "mxp100/plastic",
+  "name": "tkrause/plastic",
   "license": "MIT",
   "description": "Plastic is an Elasticsearch ODM and mapper for Laravel. It renders the developer experience more enjoyable while using Elasticsearch by providing a fluent syntax for mapping , querying and storing eloquent models.",
   "keywords": ["elasticsearch","elastic","laravel","eloquent","model","ODM","mapper"],
-  "homepage": "https://github.com/sleimanx2/plastic",
+  "homepage": "https://github.com/tkrause/plastic",
   "authors": [
     {
       "name": "Sleiman Sleiman",
@@ -14,18 +14,23 @@
       "name": "Yuriy Potemkin",
       "email": "ysoft2000@gmail.com",
       "role": "Developer"
+    },
+    {
+      "name": "Thomas Krause",
+      "email": "trueswordmaster@gmail.com",
+      "role": "Developer"
     }
   ],
   "require": {
     "php": ">=7.0",
     "elasticsearch/elasticsearch": "~5.3.0",
     "ongr/elasticsearch-dsl": "5.*",
-    "illuminate/container": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",
-    "illuminate/contracts": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",
-    "illuminate/console": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",
-    "illuminate/pagination": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",
-    "illuminate/support": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",
-    "illuminate/database": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*"
+    "illuminate/container": ">=5.2",
+    "illuminate/contracts": ">=5.2",
+    "illuminate/console": ">=5.2",
+    "illuminate/pagination": ">=5.2",
+    "illuminate/support": ">=5.2",
+    "illuminate/database": ">=5.2"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
